@@ -30,7 +30,7 @@ function showDetails(character) {
     `;
 }
 
-// Function to add votes
+// Function to add the votes
 function addVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
@@ -54,8 +54,6 @@ function resetVote(id) {
     showDetails(selectedAnimal);
 }
 
-// ... (previous code remains unchanged)
-
 // Function to add new animals
 function addAnimal(name, image) {
     const newAnimal = {
@@ -71,7 +69,7 @@ function addAnimal(name, image) {
     animalList.appendChild(listItem);
 }
 
-// Function to handle a form for the submission of adding a new animal
+// Function handling the form for the submission of new animals
 function addNewAnimal() {
     const nameInput = document.getElementById('animal-name');
     const imageInput = document.getElementById('animal-image');
