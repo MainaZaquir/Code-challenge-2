@@ -13,7 +13,7 @@ h1 {
 
 #animal-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: initial;
     align-items: center;
     margin-top: 20px;
 }
