@@ -1,3 +1,21 @@
+// Fetching the data from the server
+fetch('http://localhost:3000/characters') 
+    .then(response => response.json())
+    .then(data => {
+        animals = data.characters;
+
+// Displaying the list of animals
+ animals.forEach(character => {
+ const listItem = document.createElement('div');
+ listItem.textContent = character.name;
+ listItem.addEventListener('click', () => showDetails(character));
+ animalList.appendChild(listItem);
+   });
+ })
+ .catch(error => console.error('Error fetching data:', error));
+
+// Defining the variables
+
 const animalList = document.getElementById('animal-list');
 const animalDetails = document.getElementById('animal-details');
 
@@ -21,6 +39,7 @@ async function fetchData() {
     }
 }
 
+
 // Displaying the list of animals
     animals.forEach(character => {
         const listItem = document.createElement('div');
@@ -30,7 +49,8 @@ async function fetchData() {
     });
 
 
-// Function for displaying the animals details
+
+// Function displaying the animals details
 function showDetails(character) {
     animalDetails.innerHTML = `
         <h2>${character.name}</h2>
@@ -41,7 +61,9 @@ function showDetails(character) {
     `;
 }
 
-// Function for adding votes
+
+
+// Function for adding the votes
 function addVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
@@ -83,7 +105,9 @@ function addAnimal(name, image) {
     animalList.appendChild(listItem);
 }
 
+
 // Function handling the form submitting the new animals
+
 function addNewAnimal() {
     const nameInput = document.getElementById('animal-name');
     const imageInput = document.getElementById('animal-image');
@@ -99,6 +123,7 @@ function addNewAnimal() {
         alert('Please fill out both the name and image fields.');
     }
 }
+
 
 // Calling the fetchData function when the page loads
 window.onload = fetchData;
