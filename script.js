@@ -14,8 +14,6 @@ fetch('http://localhost:3000/characters')
  })
  .catch(error => console.error('Error fetching data:', error));
 
-
-
 // Defining the variables
 const animalList = document.getElementById('animal-list');
 const animalDetails = document.getElementById('animal-details');
