@@ -1,3 +1,21 @@
+// Fetching the data from the server
+fetch('http://localhost:3000/characters') // Replace with your server URL
+    .then(response => response.json())
+    .then(data => {
+        animals = data.characters;
+
+        // Displaying the list of animals
+        animals.forEach(character => {
+            const listItem = document.createElement('div');
+            listItem.textContent = character.name;
+            listItem.addEventListener('click', () => showDetails(character));
+            animalList.appendChild(listItem);
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+
+
 // Defining the variables
 const animalList = document.getElementById('animal-list');
 const animalDetails = document.getElementById('animal-details');
