@@ -1,18 +1,18 @@
 // Fetching the data from the server
-fetch('http://localhost:3000/characters') // Replace with your server URL
+fetch('http://localhost:3000/characters') 
     .then(response => response.json())
     .then(data => {
         animals = data.characters;
 
-        // Displaying the list of animals
-        animals.forEach(character => {
-            const listItem = document.createElement('div');
-            listItem.textContent = character.name;
-            listItem.addEventListener('click', () => showDetails(character));
-            animalList.appendChild(listItem);
-        });
-    })
-    .catch(error => console.error('Error fetching data:', error));
+// Displaying the list of animals
+ animals.forEach(character => {
+ const listItem = document.createElement('div');
+ listItem.textContent = character.name;
+ listItem.addEventListener('click', () => showDetails(character));
+ animalList.appendChild(listItem);
+   });
+ })
+ .catch(error => console.error('Error fetching data:', error));
 
 
 
@@ -37,7 +37,7 @@ animals.forEach(character => {
     animalList.appendChild(listItem);
 });
 
-// Function to display the animals details
+// Function displaying the animals details
 function showDetails(character) {
     animalDetails.innerHTML = `
         <h2>${character.name}</h2>
@@ -48,7 +48,7 @@ function showDetails(character) {
     `;
 }
 
-// Function to add the votes
+// Function for adding the votes
 function addVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
@@ -60,7 +60,7 @@ function addVote(id) {
     showDetails(selectedAnimal);
 }
 
-// Function to reset the votes to zero
+// Function for reseting the votes to zero
 function resetVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
@@ -72,7 +72,7 @@ function resetVote(id) {
     showDetails(selectedAnimal);
 }
 
-// Function to add new animals
+// Function for adding new animals
 function addAnimal(name, image) {
     const newAnimal = {
         id: animals.length + 1,
@@ -87,7 +87,7 @@ function addAnimal(name, image) {
     animalList.appendChild(listItem);
 }
 
-// Function handling the form for the submission of new animals
+// Function for handling the form of the submission of new animals
 function addNewAnimal() {
     const nameInput = document.getElementById('animal-name');
     const imageInput = document.getElementById('animal-image');
