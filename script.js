@@ -1,26 +1,7 @@
-// Fetching the data from the server
-fetch('http://localhost:3000/characters') // Replace with your server URL
-    .then(response => response.json())
-    .then(data => {
-        animals = data.characters;
-
-        // Displaying the list of animals
-        animals.forEach(character => {
-            const listItem = document.createElement('div');
-            listItem.textContent = character.name;
-            listItem.addEventListener('click', () => showDetails(character));
-            animalList.appendChild(listItem);
-        });
-    })
-    .catch(error => console.error('Error fetching data:', error));
-
-
-
-// Defining the variables
 const animalList = document.getElementById('animal-list');
 const animalDetails = document.getElementById('animal-details');
 
-// Data for the animals
+
 let animals = [
     { id: 1, name: 'Mr. Cute', image: 'https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif', votes: 0 },
     { id: 2, name: 'Mx. Monkey', image: 'https://thumbs.gfycat.com/FatalInnocentAmericanshorthair-max-1mb.gif', votes: 0 },
@@ -29,15 +10,27 @@ let animals = [
     { id: 5, name: 'Mme. Panda', image: 'https://media.giphy.com/media/ALalVMOVR8Qw/giphy.gif', votes: 0 }
 ];
 
-// Displaying the list of animals
-animals.forEach(character => {
-    const listItem = document.createElement('div');
-    listItem.textContent = character.name;
-    listItem.addEventListener('click', () => showDetails(character));
-    animalList.appendChild(listItem);
-});
+// Function for fetching data from the server
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:3000/animals');
+        animals = await response.json();
+        displayAnimals();
+    } catch (error) {
+        console.error('Error fetching data: ', error);
+    }
+}
 
-// Function to display the animals details
+// Displaying the list of animals
+    animals.forEach(character => {
+        const listItem = document.createElement('div');
+        listItem.textContent = character.name;
+        listItem.addEventListener('click', () => showDetails(character));
+        animalList.appendChild(listItem);
+    });
+
+
+// Function for displaying the animals details
 function showDetails(character) {
     animalDetails.innerHTML = `
         <h2>${character.name}</h2>
@@ -48,11 +41,13 @@ function showDetails(character) {
     `;
 }
 
-// Function to add the votes
+// Function for adding votes
 function addVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
-            return { ...animal, votes: animal.votes + 1 };
+            const updatedVotes = animal.votes + 1;
+            localStorage.setItem(`votes_${id}`, updatedVotes);
+            return { ...animal, votes: updatedVotes };
         }
         return animal;
     });
@@ -60,10 +55,11 @@ function addVote(id) {
     showDetails(selectedAnimal);
 }
 
-// Function to reset the votes to zero
+// Function for reseting the votes to zero
 function resetVote(id) {
     animals = animals.map(animal => {
         if (animal.id === id) {
+            localStorage.setItem(`votes_${id}`, 0);
             return { ...animal, votes: 0 };
         }
         return animal;
@@ -72,7 +68,7 @@ function resetVote(id) {
     showDetails(selectedAnimal);
 }
 
-// Function to add new animals
+// Function for adding new animals
 function addAnimal(name, image) {
     const newAnimal = {
         id: animals.length + 1,
@@ -87,7 +83,7 @@ function addAnimal(name, image) {
     animalList.appendChild(listItem);
 }
 
-// Function handling the form for the submission of new animals
+// Function handling the form submitting the new animals
 function addNewAnimal() {
     const nameInput = document.getElementById('animal-name');
     const imageInput = document.getElementById('animal-image');
@@ -103,3 +99,6 @@ function addNewAnimal() {
         alert('Please fill out both the name and image fields.');
     }
 }
+
+// Calling the fetchData function when the page loads
+window.onload = fetchData;
