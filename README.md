@@ -6,7 +6,7 @@ This is a simple web application that allows a user to view a given list of anim
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
-3. Start a local server to serve the `db.json` file, by running the following command ~json-server --watch db.json~
+3. Start a local server to serve the `db.json` file, by running the following command `json-server --watch db.json`
 
 ## Usage
 
