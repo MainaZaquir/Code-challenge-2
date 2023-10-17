@@ -13,7 +13,7 @@ let animals = [
 // Function for fetching data from the server
 async function fetchData() {
     try {
-        const response = await fetch(' https://my-json-server.typicode.com/MainaZaquir/Code-challenge-2');
+        const response = await fetch(' https://my-json-server.typicode.com/MainaZaquir/Code-challenge-2/characters');
         animals = await response.json();
         displayAnimals();
     } catch (error) {
