@@ -3,8 +3,8 @@ const animalDetails = document.getElementById('animal-details');
 
 
 let animals = [
-    { id: 1, name: 'Mr. Cute', image: 'https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif', votes: 0 },
-    { id: 2, name: 'Mx. Monkey', image: 'https://thumbs.gfycat.com/FatalInnocentAmericanshorthair-max-1mb.gif', votes: 0 },
+    { id: 1, name: 'Mr. Cute', image: 'https://i.pinimg.com/236x/65/7c/f5/657cf5d5a23e39ee148bba8d8bfdcfe5.jpg', votes: 0 },
+    { id: 2, name: 'Mx. Monkey', image: 'https://i.pinimg.com/236x/8d/96/91/8d969183a46442799ad642821b3b67c7.jpg', votes: 0 },
     { id: 3, name: 'Ms. Zebra', image: 'https://media2.giphy.com/media/20G9uNqE3K4dRjCppA/source.gif', votes: 0 },
     { id: 4, name: 'Dr. Lion', image: 'http://bestanimations.com/Animals/Mammals/Cats/Lions/animated-lion-gif-11.gif', votes: 0 },
     { id: 5, name: 'Mme. Panda', image: 'https://media.giphy.com/media/ALalVMOVR8Qw/giphy.gif', votes: 0 }
